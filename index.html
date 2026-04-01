@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamesy-tech</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@8..144,300..700&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Google Sans Flex", sans-serif;
+  }
+
+  body {
+    background: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .phone {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    background: #ffffff;
+    padding: 40px 22px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 32px;
+    color: #222;
+    text-align: center;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+
+    border: 2px solid transparent;
+    outline: 0px solid transparent;
+    outline-offset: 0px;
+
+    transition: outline 0.2s ease, outline-offset 0.2s ease;
+  }
+
+  .open  { background: #e3f1f0; color: #2f7f78; }
+  .docs  { background: #e7f2e7; color: #3d7a47; }
+  .draw  { background: #f5edd3; color: #9a7a2f; }
+  .code  { background: #e7edf5; color: #3c6fa3; }
+  .notes { background: #f6e9dd; color: #b36a2d; }
+
+  .open:hover  { outline: 3px solid #2f7f78; outline-offset: 4px; }
+  .docs:hover  { outline: 3px solid #3d7a47; outline-offset: 4px; }
+  .draw:hover  { outline: 3px solid #9a7a2f; outline-offset: 4px; }
+  .code:hover  { outline: 3px solid #3c6fa3; outline-offset: 4px; }
+  .notes:hover { outline: 3px solid #b36a2d; outline-offset: 4px; }
+
+  @media (max-width: 600px) {
+    body {
+      background: #ffffff;
+    }
+
+    .phone {
+      max-width: 100%;
+      padding: 32px 18px;
+    }
+  }
+
+.image {
+    width:25%;
+    text-align: center;
+    margin-bottom:7px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+    <center>
+
+    <img src="shapes.png" class="image">
+
+  <h1>Jamesy-tech</h1>
+
+  <a class="btn open" href="https://jamesy-tech.github.io/jamesy-creator">Jamesy Creator</a>
+<a class="btn code" href="https://jamesy-tech.github.io/BookUI/dashboard.html">BookUI</a>
+<a class="btn docs" href="https://jamesy-tech.github.io/JQuizzi3">JQuizzi3</a>
+  <a class="btn draw" href="https://github.com/Jamesy-tech/command-bookmarklets">command-bookmarklets</a>
+  <a class="btn notes" href="https://github.com/Jamesy-tech/sound-bookmarklets">sound-bookmarklets</a>
+
+  </center>
+
+</div>
+
+</body>
+</html>
