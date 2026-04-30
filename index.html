@@ -1,120 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jamesy-tech</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
 <link rel="icon" href="icon3.png">
-
+<title>Jamesy-tech</title>
 <style>
-  * {
-    box-sizing: border-box;
+body {
     margin: 0;
-    padding: 0;
-    font-family: "Inter", sans-serif;
-  }
-
-  body {
-    background: #f3f3f3;
+    min-height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-  }
-
-  .phone {
+    background: aliceblue;
+    /* Fade-in Setup */
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+.logo {
+    width: 110px;
+    display: block;
+    margin: auto;
+}
+.logo_container {
+    padding: 5px;
+}
+.title {
+    font-family: "Bricolage Grotesque";
+    display: block;
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.searchbar {
+    padding: 15px;
+    font-family: "Bricolage Grotesque";
+    width: 500px;
+    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+    border: solid lightgray 2px;
+}
+.searchbar:focus {
+    border: solid dodgerblue 2px;
+}
+.app_img {
+    height: 35px;
+    margin-top: 4px;
+}
+.horizontal_apps::-webkit-scrollbar {
+    display: none;
+}
+.horizontal_apps {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 10px;
+    margin-top: 5px;
+    width: 515px;
+    padding: 10px;
+    padding-left: 16px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    transition: 0.25s ease;
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+}
+.app {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    padding: 7px;
+    background: white;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 45px;
+    border: solid transparent 2px;
+    transition: 0.3s;
+}
+.app:hover {
+    border: solid dodgerblue 2px;
+}
+.searching_options {
+    width: 515px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    overflow: hidden;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+.searching_options.show {
+    max-height: 400px; /* Increased to fit more results */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.horizontal_apps.hidden {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+}
+.option {
+    padding: 10px;
     width: 100%;
-    max-width: 480px;
-    min-height: 100vh;
-    background: #ffffff;
-    padding: 50px 22px 24px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  h1 {
-    font-size: 26px;
-    margin-bottom: 32px;
-    color: #222;
-    text-align: center;
-  }
-
-  .btn {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    cursor:pointer;
-    margin-bottom: 16px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 500;
-
-    border: 2px solid transparent;
-    outline: 0px solid transparent;
-    outline-offset: 0px;
-
-    transition: outline 0.2s ease, outline-offset 0.2s ease;
-  }
-
-  .green       { background: #e3f1f0; color: #2f7f78; }
-  .blue        { background: #e7edf5; color: #3c6fa3; }
-  .brown       { background: #f6e9dd; color: #b36a2d; }
-.pink { background: rgba(255, 182, 193, 0.4); color: #7a2f5c; }
-
-  .green:hover   { outline: 3px solid #2f7f78; outline-offset: 4px; }
-  .blue:hover    { outline: 3px solid #3c6fa3; outline-offset: 4px; }
-  .brown:hover   { outline: 3px solid #b36a2d; outline-offset: 4px; }
-  .pink:hover    { outline: 3px solid #7a2f5c; outline-offset: 4px; }
-
-  .purple       { background: rgba(215, 179, 255, 0.4); color: #4a1f70; }
-  .orange       { background: rgba(255, 203, 153, 0.4); color: #b35c1f; }
-  .purple:hover { outline: 3px solid rgba(74,31,112,0.7); outline-offset: 4px; }
-  .orange:hover { outline: 3px solid rgba(179,92,31,0.7); outline-offset: 4px; }
-
-  @media (max-width: 600px) {
-    body { background: #ffffff; }
-    .phone { max-width: 100%; padding: 32px 18px; }
-  }
-
-  .image {
-    width:25%;
-    text-align: center;
-    margin-bottom:20px;
-  }
-
-  .branding {
-    cursor:pointer;
-  }
-
+    text-align: left;
+    background: none;
+    border: none;
+    transition: 0.3s;
+    font-family: "Bricolage Grotesque";
+    cursor: pointer;
+    border-radius: 5px;
+}
+.option:hover {
+    background: rgb(249, 249, 249);
+}
+.option.hidden {
+    display: none;
+}
 </style>
 </head>
-
 <body>
-
-<div class="phone">
+<div class="main_container">
     <center>
-        <div class="branding" onclick="window.top.location.href = 'https://jamesy-tech.github.io';">
-            <img src="icon.png" class="image">
-            <h1>Jamesy-tech</h1>
+        <div class="logo_container">
+            <img class="logo" src="icon2.png">
+            <h1 class="title">Jamesy-tech</h1>
         </div>
-
-        <a class="btn green" onclick='window.top.location.href="https://jamesy-tech.github.io/jamesy-creator";'>Jamesy Creator</a>
-        <a class="btn blue" onclick='window.top.location.href="https://jamesy-tech.github.io/BookUI/dashboard.html";'>BookUI</a>
-        <a class="btn blue" onclick='window.top.location.href="https://jamesy-tech.github.io/scripts";'>Scripts</a>
-        <a class="btn brown" onclick='window.top.location.href="https://github.com/Jamesy-tech/command-bookmarklets";'>command-bookmarklets</a>
-        <a class="btn brown" onclick='window.top.location.href="https://github.com/Jamesy-tech/sound-bookmarklets";'>sound-bookmarklets</a>
- <a class="btn pink" onclick='window.top.location.href="https://youtube.com/@jamesydeveloper";'>@JamesyDeveloper (YouTube)</a>
- <a class="btn pink" onclick='window.top.location.href="https://www.roblox.com/users/4624140937/profile";'>@JamesyDeveloper (Roblox)</a>
-        <a class="btn pink" onclick='window.top.location.href="https://github.com/Jamesy-tech";'>@Jamesy-tech (GitHub)</a>
-
+        <input class="searchbar" id="searchbar" placeholder="Search Jamesy-tech or Ask Google" autocomplete="off">
+        <div class="horizontal_apps">
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/jamesy-creator';">
+                <img src="shapes.png" class="app_img">
+            </div>
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/BookUI/dashboard.html';">
+                <img src="bookui.png" class="app_img">
+            </div>
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/scripts';">
+                <img src="code.png" class="app_img">
+            </div>
+            <div class="app" onclick="window.location.href = 'https://youtube.com/@jamesydeveloper';">
+                <img src="youtube.png" class="app_img">
+            </div>
+            <div class="app" onclick="window.location.href = 'https://github.com/Jamesy-tech';">
+                <img src="github.png" class="app_img">
+            </div>
+        </div>
+        <div class="searching_options" id="searching_options">
+            <button class="option" data-url="https://jamesy-tech.github.io/jamesy-creator">Jamesy Creator</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/BookUI/dashboard.html">BookUI+ Dashboard</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/BookUI/index.html">BookUI+ Command Panel</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/scripts">Scripts</button>
+            <button class="option" data-url="https://github.com/Jamesy-tech">Jamesy-tech - GitHub</button>
+            <button class="option" data-url="https://youtube.com/@jamesydeveloper">JamesyDeveloper - YouTube</button>
+            <button class="option" id="google-option">Search on Google</button>
+        </div>
     </center>
 </div>
 
+<script>
+const searchbar = document.getElementById("searchbar");
+const optionsContainer = document.getElementById("searching_options");
+const apps = document.querySelector(".horizontal_apps");
+const allOptions = document.querySelectorAll(".option");
+const googleOption = document.getElementById("google-option");
+
+function navigate(option) {
+    const query = searchbar.value.trim();
+    if (option === googleOption) {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    } else {
+        const url = option.getAttribute("data-url");
+        if (url) window.location.href = url;
+    }
+}
+
+function filterResults() {
+    const query = searchbar.value.toLowerCase().trim();
+    const isSearching = query !== "";
+    optionsContainer.classList.toggle("show", isSearching);
+    apps.classList.toggle("hidden", isSearching);
+    allOptions.forEach((option) => {
+        if (option === googleOption) return;
+        const text = option.textContent.toLowerCase();
+        option.classList.toggle("hidden", !text.includes(query));
+    });
+}
+
+searchbar.addEventListener("input", filterResults);
+
+searchbar.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        const firstResult = Array.from(allOptions).find(opt => 
+            window.getComputedStyle(opt).display !== "none"
+        );
+        if (firstResult) navigate(firstResult);
+    }
+});
+
+allOptions.forEach(option => {
+    option.addEventListener("click", () => navigate(option));
+});
+
+window.addEventListener("load", () => {
+    document.body.style.opacity = "1";
+    searchbar.focus();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('query');
+    
+    if (queryParam) {
+        searchbar.value = queryParam;
+        filterResults();
+        const firstResult = Array.from(allOptions).find(opt => 
+            window.getComputedStyle(opt).display !== "none"
+        );
+        if (firstResult) navigate(firstResult);
+    }
+});
+</script>
 </body>
 </html>
