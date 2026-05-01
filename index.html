@@ -223,8 +223,12 @@ allOptions.forEach(option => {
     option.addEventListener("click", () => navigate(option));
 });
 
+searchbar.focus();
+searchbar.value = "";
+
 window.addEventListener("load", () => {
     document.body.style.opacity = "1";
+
     searchbar.focus();
 
     const urlParams = new URLSearchParams(window.location.search);
