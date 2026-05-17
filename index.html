@@ -29,6 +29,7 @@ body {
 .logo_container {
     padding: 5px;
 }
+
 .title {
     font-family: "Bricolage Grotesque";
     display: block;
@@ -36,6 +37,18 @@ body {
     margin-top: 10px;
     margin-bottom: 20px;
 }
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.letter.visible {
+    opacity: 1;
+}
+.letter.fade-out {
+    opacity: 0;
+}
+
 .searchbar {
     padding: 15px;
     font-family: "Bricolage Grotesque";
@@ -223,42 +236,74 @@ body {
 
 <script>
 
-async function updateLocationAndWeather() {
-    try {
+const greetingSequence = [
+    { text: "Let's get started", holdTime: 1500 },
+    { text: "Jamesy-tech", holdTime: null }
+];
 
-        const response = await fetch("https://ipwho.is/");
-        const data = await response.json();
+function runTypewriterEffect() {
+    const titleElement = document.querySelector(".title");
+    let sequenceIndex = 0;
 
-        if (!data.success) {
-            throw new Error("Location failed");
-        }
+    function typeText(targetText, callback) {
+        titleElement.innerHTML = "";
+        
+        const letters = targetText.split("").map(char => {
+            const span = document.createElement("span");
+            span.className = "letter";
+            span.textContent = char === " " ? "\u00A0" : char;
+            titleElement.appendChild(span);
+            return span;
+        });
 
-        const city = data.city;
-        const country = data.country;
-
-        const weatherResponse = await fetch(
-            `https://wttr.in/${encodeURIComponent(city)}?format=j1`
-        );
-
-        const weatherData = await weatherResponse.json();
-
-        const temp = weatherData.current_condition[0].temp_C;
-
-        document.getElementById("location").textContent =
-            `${temp}°C • ${city}, ${country}`;
-
-    } catch (error) {
-
-        document.getElementById("location").textContent =
-            "Auckland, New Zealand";
-
-        console.error(error);
-
+        let charIndex = 0;
+        const typingInterval = setInterval(() => {
+            if (charIndex < letters.length) {
+                letters[charIndex].classList.add("visible");
+                charIndex++;
+            } else {
+                clearInterval(typingInterval);
+                if (callback) callback(letters);
+            }
+        }, 80);
     }
+
+    function fadeOutLetters(letters, callback) {
+        let charIndex = 0;
+        const fadeInterval = setInterval(() => {
+            if (charIndex < letters.length) {
+                letters[charIndex].classList.remove("visible");
+                letters[charIndex].classList.add("fade-out");
+                charIndex++;
+            } else {
+                clearInterval(fadeInterval);
+                setTimeout(callback, 500);
+            }
+        }, 50);
+    }
+
+    function processSequence() {
+        if (sequenceIndex >= greetingSequence.length) return;
+
+        const currentStep = greetingSequence[sequenceIndex];
+
+        typeText(currentStep.text, (letters) => {
+            if (currentStep.holdTime === null) return;
+
+            setTimeout(() => {
+                fadeOutLetters(letters, () => {
+                    titleElement.innerHTML = "&nbsp;";
+                    sequenceIndex++;
+                    setTimeout(processSequence, 200);
+                });
+            }, currentStep.holdTime);
+        });
+    }
+
+    processSequence();
 }
 
-updateLocationAndWeather();
-setInterval(updateLocationAndWeather, 600000);
+window.addEventListener("DOMContentLoaded", runTypewriterEffect);
 
     function updateTime() {
     const now = new Date();
