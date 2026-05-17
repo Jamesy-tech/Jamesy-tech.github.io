@@ -228,9 +228,7 @@ body {
 
 <div class="corner top_left">Jamesy-tech</div>
 <div class="corner top_right" id="time">00:00</div>
-<div class="corner bottom_left" id="location">
-    Loading location...
-</div>
+<div class="corner bottom_left" id="location">Loading location...</div>
 
 <script src='https://www.noupe.com/embed/019e2e76f20b71a9bdf8da74f5ecb4ba369c.js'></script>
 
@@ -305,7 +303,7 @@ function runTypewriterEffect() {
 
 window.addEventListener("DOMContentLoaded", runTypewriterEffect);
 
-    function updateTime() {
+function updateTime() {
     const now = new Date();
 
     const time = now.toLocaleTimeString([], {
@@ -318,6 +316,15 @@ window.addEventListener("DOMContentLoaded", runTypewriterEffect);
 
 updateTime();
 setInterval(updateTime, 1000);
+
+function updateDate() {
+    const now = new Date();
+    const options = { weekday: 'long', month: 'short', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('en-US', options);
+    
+    document.getElementById("location").textContent = `${dateStr}, 2026`;
+}
+updateDate();
 
 const searchbar = document.getElementById("searchbar");
 const optionsContainer = document.getElementById("searching_options");
