@@ -55,15 +55,17 @@ body {
 }
 
 .searchbar {
+    box-sizing: border-box;
+    width: 515px;
     padding: 15px;
     font-family: "Nunito";
-    width: 500px;
     font-size: 15px;
     border-radius: 10px;
     outline: none;
     transition: 0.3s;
     border: solid lightgray 2px;
 }
+
 .searchbar:focus {
     border: solid dodgerblue 2px;
 }
@@ -76,41 +78,44 @@ body {
 }
 .horizontal_apps {
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
+    justify-content: center;
     gap: 10px;
-    margin-top: 5px;
+    margin: 10px auto 0;
+    margin-top:4px;
     width: 515px;
-    padding: 10px;
-    padding-left: 16px;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
+    padding: 10px 0;
     transition: 0.25s ease;
     opacity: 1;
     transform: translateY(0);
     max-height: 100px;
 }
+
 .app {
-    scroll-snap-align: start;
-    flex: 0 0 auto;
+    flex: 1;
     padding: 7px;
     background: white;
-    width: 80px;
     cursor: pointer;
     border-radius: 5px;
-    height: 45px;
     border: solid transparent 2px;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    padding-bottom:12px;
+    justify-content: center;
+    height:60px;
+    box-sizing: border-box;
 }
 .app:hover {
     border: solid dodgerblue 2px;
 }
+
 .searching_options {
+    box-sizing: border-box;
     width: 515px;
     background: white;
     border-radius: 10px;
     padding: 10px;
-    margin-top: 10px;
+    margin: 10px auto 0;
     max-height: 0;
     opacity: 0;
     transform: translateY(-10px);
@@ -118,6 +123,7 @@ body {
     pointer-events: none;
     transition: 0.25s ease;
 }
+
 .searching_options.show {
     max-height: 300px;
     opacity: 1;
@@ -133,9 +139,11 @@ body {
     transform: translateY(-8px);
     pointer-events: none;
 }
+
 .option {
-    padding: 10px;
+    box-sizing: border-box;
     width: 100%;
+    padding: 10px;
     text-align: left;
     background: none;
     border: none;
@@ -144,6 +152,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .option:hover {
     background: rgb(249, 249, 249);
 }
@@ -198,9 +207,7 @@ body {
             <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/BookUI/';">
                 <img src="bookui.png" class="app_img">
             </div>
-            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/scripts';">
-                <img src="code.png" class="app_img">
-            </div>
+
             <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/MorningGlow';">
                 <img src="mg-club.png" class="app_img">
             </div>
@@ -225,9 +232,8 @@ body {
             <button class="option" data-url="The Design Process.pdf">[File] The Design Process.pdf</button>
             <button class="option" data-url="animation1.mp4">[File] animation1.mp4</button>
             <button class="option" data-url="https://squidindustries.co">[Favourites] Squid Industries Balisong Trainers</button>
-            <button class="option" data-url="https://www.squidindustries.co/products/krake-raken-trainer-v3">[Favourites] Krake Raken Trainer V3 - Squid Industries Balisong Trainers</button>
+             <button class="option" data-url="https://www.squidindustries.co/products/winter-nautilus-v2">[Favourites] Winter Nautilus V2 - Squid Industries Balisong Trainers</button>
             <button class="option" data-url="https://nabalis.com">[Favourites] Nabalis Balisong Trainers</button>
-            <button class="option" data-url="https://nabalis.com/products/nabalis-wing-trainer-butterfly-knife-balisong-for-beginner-gradient-handles">[Favourites] Wing - Nabalis Balisong Trainers</button>
             <button class="option" data-url="https://github.com/Jamesy-tech/malachimobsounds">/Jamesy-tech/malachimobsounds</button>
             <button class="option" data-url="https://github.com/Jamesy-tech/Kahu-Hub">/Jamesy-tech/Kahu-Hub</button>
             <button class="option" data-url="https://github.com/Jamesy-tech/raspberry-pi-projects">/Jamesy-tech/raspberry-pi-projects</button>
