@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+<link rel="icon" href="icon8.png">
+
+<title>Jamesy-tech | Coding is Life™</title>
+<meta name="author" content="James">
+<meta name="description" content="The home for all my creations, resources, favourites and more! | @JamesyDeveloper on YT | #codingislife">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    min-height: 93.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: aliceblue;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+.logo {
+    width: 110px;
+    display: block;
+    margin: auto;
+    margin-bottom:6px;
+}
+.logo_container {
+    padding: 6px;
+}
+
+.title {
+    font-family: "Nunito";
+    display: block;
+    font-size: 40px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+.letter {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.letter.visible {
+    opacity: 1;
+}
+.letter.fade-out {
+    opacity: 0;
+}
+
+.searchbar {
+    box-sizing: border-box;
+    width: 515px;
+    padding: 15px;
+    font-family: "Nunito";
+    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+    border: solid lightgray 2px;
+}
+
+.searchbar:focus {
+    border: solid dodgerblue 2px;
+}
+.app_img {
+    height: 35px;
+    margin-top: 4px;
+}
+.horizontal_apps::-webkit-scrollbar {
+    display: none;
+}
+.horizontal_apps {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px auto 0;
+    margin-top:4px;
+    width: 515px;
+    padding: 10px 0;
+    transition: 0.25s ease;
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+}
+
+.app {
+    flex: 1;
+    padding: 7px;
+    background: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: solid transparent 2px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    padding-bottom:12px;
+    justify-content: center;
+    height:60px;
+    box-sizing: border-box;
+}
+.app:hover {
+    border: solid dodgerblue 2px;
+}
+
+.searching_options {
+    box-sizing: border-box;
+    width: 515px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px auto 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    overflow: hidden;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+.searching_options.show {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.horizontal_apps.hidden {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+}
+
+.option {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background: none;
+    border: none;
+    transition: 0.3s;
+    font-family: "Nunito";
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.option:hover {
+    background: rgb(249, 249, 249);
+}
+.option.hidden {
+    display: none;
+}
+
+.logo_container {
+  cursor:pointer;
+}
+
+.corner {
+    position: fixed;
+    font-family: "Nunito";
+    font-size: 16px;
+    color: rgba(0,0,0,0.7);
+    z-index: 999;
+    user-select: none;
+    letter-spacing: 0.5px;
+}
+
+.top_left {
+    top: 20px;
+    left: 25px;
+}
+
+.top_right {
+    top: 20px;
+    right: 25px;
+}
+
+.bottom_left {
+    bottom: 20px;
+    left: 25px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="main_container">
+    <center>
+        <div class="logo_container" onclick="window.top.location.href = 'https://jamesy-tech.github.io';">
+            <img class="logo" src="icon8.png">
+            <h1 class="title">Jamesy-tech</h1>
+        </div>
+        <input class="searchbar" id="searchbar" placeholder="Search Jamesy-tech or type a URL" autocomplete="off">
+        <div class="horizontal_apps">
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/jamesy-creator';">
+                <img src="shapes.png" class="app_img">
+            </div>
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/BookUI/';">
+                <img src="bookui.png" class="app_img">
+            </div>
+
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/MorningGlow';">
+                <img src="mg-club.png" class="app_img">
+            </div>
+            <div class="app" onclick="window.location.href = 'https://jamesy-tech.github.io/the-aloe-vera-guide';">
+                <img src="the-aloe-vera-guide.png" class="app_img">
+            </div>
+        </div>
+        <div class="searching_options" id="searching_options">
+            <button class="option" data-url="https://jamesy-tech.github.io/jamesy-creator">Jamesy Creator</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/jamesy-creator-main.apk">jamesy-creator-main.apk</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/BookUI/index.html">BookUI | Command Panel</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/BookUI/documentation.html">BookUI | Documentation</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/AddBookUI">Add BookUI</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/scripts">Scripts</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/MorningGlow">The Morning Glow Club</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/the-aloe-vera-guide">The Aloe Vera Guide</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/ZacLabs">ZacLabs</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/buymeapencilforlife">buymeapencilforlife</button>
+             <button class="option" data-url="https://jamesy-tech.github.io/bsod">bsod</button>
+            <button class="option" data-url="https://jamesy-tech.github.io/Windows-12-Lite/startup.html">Windows 12 Concept</button>
+            <button class="option" data-url="https://github.com/Jamesy-tech">@Jamesy-tech - GitHub</button>
+            <button class="option" data-url="https://youtube.com/@jamesydeveloper">@JamesyDeveloper - YouTube</button>
+            <button class="option" data-url="https://www.roblox.com/users/4624140937/profile">@JamesyDeveloper - Roblox</button>
+            <button class="option" data-url="https://roblox.com/communities/33260778/JamesyGames">JamesyGames - Roblox</button>
+            <button class="option" data-url="https://roblox.com/join/gtz60">JamesyGames Hub - Roblox</button>
+            <button class="option" data-url="The Design Process.pdf">[File] The Design Process.pdf</button>
+            <button class="option" data-url="animation1.mp4">[File] animation1.mp4</button>
+            <button class="option" data-url="https://squidindustries.co">[Favourites] Squid Industries Balisong Trainers</button>
+             <button class="option" data-url="https://www.squidindustries.co/products/winter-nautilus-v2">[Favourites] Winter Nautilus V2 - Squid Industries Balisong Trainers</button>
+            <button class="option" data-url="https://nabalis.com">[Favourites] Nabalis Balisong Trainers</button>
+              <button class="option" data-url="https://jamesy-tech.github.io/codecreator">[Archived] codecreator</button>
+               <button class="option" data-url="https://jamesy-tech.github.io/d">/Jamesy-tech/d</button>
+           <button class="option" data-url="https://github.com/Jamesy-tech/toolbox">/Jamesy-tech/toolbox</button>
+            <button class="option" data-url="https://github.com/Jamesy-tech/bsod">/Jamesy-tech/bsod</button>
+           <button class="option" data-url="https://github.com/Jamesy-tech/raspberry-pi-projects">/Jamesy-tech/raspberry-pi-projects</button>
+            <button class="option" data-url="https://github.com/Jamesy-tech/command-bookmarklets">/Jamesy-tech/command-bookmarklets/</button>
+            <button class="option" data-url="https://github.com/Jamesy-tech/sound-bookmarklets">/Jamesy-tech/sound-bookmarklets/</button>
+              <button class="option" data-url="https://github.com/Jamesy-tech/ttrs-hacks">/Jamesy-tech/ttrs-hacks/</button>
+               <button class="option" data-url="https://github.com/Jamesy-tech/blooket-hacks">/Jamesy-tech/blooket-hacks/</button>
+                  <button class="option" data-url="https://github.com/Jamesy-tech/RaspHub">/Jamesy-tech/RaspHub</button>
+            <button class="option" data-url="https://github.com/Jamesy-tech/chromite">/Jamesy-tech/chromite</button>
+                        <button class="option" data-url="https://github.com/Jamesy-tech/Kahu-Hub">/Jamesy-tech/Kahu-Hub</button>
+              <button class="option" data-url="https://github.com/Jamesy-tech/malachimobsounds">/Jamesy-tech/malachimobsounds</button>
+               <button class="option" id="google-option">Search on Google</button>
+        </div>
+    </center>
+</div>
+
+<div class="corner top_left">https://jamesy-tech.github.io</div>
+<div class="corner top_right" id="time">00:00</div>
+<div class="corner bottom_left" id="location">Loading location...</div>
+
+<script src='https://www.noupe.com/embed/019e2e76f20b71a9bdf8da74f5ecb4ba369c.js'></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/gh/Jamesy-tech/controller-connector@main/controller.js"></script>-->
+
+<script>
+
+const greetingSequence = [
+    { text: "", holdTime: 0 },
+    { text: "Coding is Life™", holdTime: null }
+];
+
+function runTypewriterEffect() {
+    const titleElement = document.querySelector(".title");
+    let sequenceIndex = 0;
+
+    function typeText(targetText, callback) {
+        titleElement.innerHTML = "";
+        
+        const letters = targetText.split("").map(char => {
+            const span = document.createElement("span");
+            span.className = "letter";
+            span.textContent = char === " " ? "\u00A0" : char;
+            titleElement.appendChild(span);
+            return span;
+        });
+
+        let charIndex = 0;
+        const typingInterval = setInterval(() => {
+            if (charIndex < letters.length) {
+                letters[charIndex].classList.add("visible");
+                charIndex++;
+            } else {
+                clearInterval(typingInterval);
+                if (callback) callback(letters);
+            }
+        }, 80);
+    }
+
+    function fadeOutLetters(letters, callback) {
+        let charIndex = 0;
+        const fadeInterval = setInterval(() => {
+            if (charIndex < letters.length) {
+                letters[charIndex].classList.remove("visible");
+                letters[charIndex].classList.add("fade-out");
+                charIndex++;
+            } else {
+                clearInterval(fadeInterval);
+                setTimeout(callback, 500);
+            }
+        }, 50);
+    }
+
+    function processSequence() {
+        if (sequenceIndex >= greetingSequence.length) return;
+
+        const currentStep = greetingSequence[sequenceIndex];
+
+        typeText(currentStep.text, (letters) => {
+            if (currentStep.holdTime === null) return;
+
+            setTimeout(() => {
+                fadeOutLetters(letters, () => {
+                    titleElement.innerHTML = "&nbsp;";
+                    sequenceIndex++;
+                    setTimeout(processSequence, 200);
+                });
+            }, currentStep.holdTime);
+        });
+    }
+
+    processSequence();
+}
+
+window.addEventListener("DOMContentLoaded", runTypewriterEffect);
+
+function updateTime() {
+    const now = new Date();
+
+    const time = now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    document.getElementById("time").textContent = time;
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+function updateDate() {
+    const now = new Date();
+    const options = { weekday: 'long', month: 'short', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('en-US', options);
+    
+    document.getElementById("location").textContent = `${dateStr}, 2026`;
+}
+updateDate();
+
+const searchbar = document.getElementById("searchbar");
+const optionsContainer = document.getElementById("searching_options");
+const apps = document.querySelector(".horizontal_apps");
+const allOptions = document.querySelectorAll(".option");
+const googleOption = document.getElementById("google-option");
+
+function navigate(option) {
+    const query = searchbar.value.trim();
+    if (option === googleOption) {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    } else {
+        const url = option.getAttribute("data-url");
+        if (url) window.location.href = url;
+    }
+}
+
+function filterResults() {
+    const query = searchbar.value.toLowerCase().trim();
+    const isSearching = query !== "";
+    optionsContainer.classList.toggle("show", isSearching);
+    apps.classList.toggle("hidden", isSearching);
+    allOptions.forEach((option) => {
+        if (option === googleOption) return;
+        const text = option.textContent.toLowerCase();
+        option.classList.toggle("hidden", !text.includes(query));
+    });
+}
+
+searchbar.addEventListener("input", filterResults);
+
+searchbar.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        const firstResult = Array.from(allOptions).find(opt => 
+            window.getComputedStyle(opt).display !== "none"
+        );
+        if (firstResult) navigate(firstResult);
+    }
+});
+
+allOptions.forEach(option => {
+    option.addEventListener("click", () => navigate(option));
+});
+
+searchbar.focus();
+searchbar.value = "";
+
+window.addEventListener("load", () => {
+    document.body.style.opacity = "1";
+
+    searchbar.focus();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryParam = urlParams.get('query');
+    
+    if (queryParam) {
+        searchbar.value = queryParam;
+        filterResults();
+        const firstResult = Array.from(allOptions).find(opt => 
+            window.getComputedStyle(opt).display !== "none"
+        );
+        if (firstResult) navigate(firstResult);
+    }
+});
+</script>
+</body>
+</html>
