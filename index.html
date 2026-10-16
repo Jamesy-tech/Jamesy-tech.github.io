@@ -76,6 +76,17 @@ footer{max-width:1100px;margin:30px auto 0;padding:20px;color:rgba(0,0,0,.55);fo
  .hero .btns{margin-left:0}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+main video{
+  display:block;
+  width:100%;
+/*  height:400px; */
+  aspect-ratio:16/9;
+  border-radius:14px;
+  background:#000;
+  margin-bottom:16px;
+}
+
 </style>
 </head>
 <body>
@@ -95,6 +106,14 @@ footer{max-width:1100px;margin:30px auto 0;padding:20px;color:rgba(0,0,0,.55);fo
 </header>
 
 <main>
+
+    <video id="video" controls autoplay loop muted playsinline>
+  <source src="cover5.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<span style="padding: 6px; display:block;"></span>
+
  <section class="hero">
   <div>
    <h1>Welcome to jamesy-tech.github.io</h1>
@@ -160,11 +179,15 @@ footer{max-width:1100px;margin:30px auto 0;padding:20px;color:rgba(0,0,0,.55);fo
 
 <script src='https://www.noupe.com/embed/019e2e76f20b71a9bdf8da74f5ecb4ba369c.js'></script>
 <script>
-// GitHub repos
+
+const video = document.getElementById("video");
+const n = Math.floor(Math.random() * 5) + 1;
+video.src = `cover${n}.mp4`;
+video.play().catch(() => {});
+
 const repos=[["toolbox","Collection of Bash scripts"],["bsod","Fake BSOD"],["raspberry-pi-projects","RPi projects"],["command-bookmarklets","Command bookmarklets"],["sound-bookmarklets","Sound bookmarklets"],["ttrs-hacks","TTRS hacks"],["blooket-hacks","Blooket hacks"],["RaspHub","RaspHub"],["chromite","Chromite"],["Kahu-Hub","Kahu Hub"],["malachimobsounds","Custom mob sounds"]];
 document.getElementById("repos").innerHTML=repos.map(r=>`<a class="card" href="https://github.com/Jamesy-tech/${r[0]}">/${r[0]}<small>${r[1]}</small></a>`).join("");
 
-// Typewriter title
 const titleEl=document.querySelector(".title");
 "Coding is Life™".split("").forEach(c=>{const s=document.createElement("span");s.className="letter";s.textContent=c===" "?"\u00A0":c;titleEl.appendChild(s)});
 window.addEventListener("DOMContentLoaded",()=>{
